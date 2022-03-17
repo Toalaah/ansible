@@ -1,0 +1,11 @@
+- name: Clone configurations
+  ansible.builtin.git:
+    repo: 'git@github.com:Toalaah/config.git'
+    dest: "{{ lookup('env', 'HOME') }}/.local/dotfiles"
+    recursive: yes # set to true to download wallpaper submodule as well
+    track_submodules: yes # want latest wallpaper submodule even if the main repo has an older revision
+    accept_newhostkey: yes
+    version: HEAD
+# TODO: Implement script which stows correctly
+- name: Stow dotfiles
+  shell: echo 'TODO - Implement script which stows correctly'

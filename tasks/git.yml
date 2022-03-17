@@ -1,0 +1,34 @@
+- name: Setup Git email
+  git_config:
+    name: user.email
+    scope: global
+    value: "samuel.kunst@gmail.com"
+  tags:
+  - git
+- name: Setup Git name
+  git_config:
+    name: user.name
+    scope: global
+    value: "Samuel Kunst"
+  tags:
+  - git
+- name: Setup Git commit alias
+  git_config:
+    name: alias.ci
+    scope: global
+    value: commit
+- name: Setup Git status alias
+  git_config:
+    name: alias.s
+    scope: global
+    value: status
+- name: Setup Git commit signing
+  git_config:
+    name: commit.gpgsign
+    scope: global
+    value: true
+- name: Configure Git credential provider
+  git_config:
+    name: credential.provider
+    scope: global
+    value: generic

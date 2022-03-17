@@ -1,0 +1,58 @@
+- name: Install common packages (across all systems)
+  become: true
+  pacman:
+    name:
+      - "alacritty"
+      - "bat"
+      - "clang"
+      - "cowsay"
+      - "docker"
+      - "docker-compose"
+      - "exa"
+      - "fd"
+      - "feh"
+      - "fzf"
+      - "glow"
+      - "go"
+      - "gpg"
+      - "htop"
+      - "jq"
+      - "neofetch"
+      - "npm"
+      - "openssh"
+      - "pass"
+      - "ranger"
+      - "redshift"
+      - "ripgrep"
+      - "shellcheck"
+      - "stow"
+      - "tldr"
+      - "tldr"
+      - "tmux"
+      - "unclutter"
+      - "ungoogled-chromium"
+      - "unzip"
+      - "zsh"
+  tags:
+    - install
+    - packages
+- name: Install additional packages (Arch only)
+  become: true
+  pacman:
+    name:
+      - "dunst"
+      - "mpv"
+      - "nordvpn-bin"
+      - "pacman-contrib"
+      - "pipewire"
+      - "pipewire-alsa"
+      - "pipewire-pulse"
+      - "scrot"
+      - "xclip"
+      - "zathura"
+      - "zathura-pdf-mupdf"
+  when: ansible_facts['os_family'] == "Archlinux"
+  tags:
+    - install
+    - packages
+
