@@ -9,8 +9,8 @@
   #     - install
   #     - core
   tasks:
-    - include_tasks: tasks/base.yml
-      name: Setup Base Packages
+    # - include_tasks: tasks/base.yml
+    #   name: Setup Base Packages
 
     - include_tasks: tasks/osx-defaults.yml
       name: Setup OSX Defaults

@@ -1,3 +1,11 @@
+- name: Setup default branch name
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: "master"
+  tags:
+  - git
+
 - name: Setup Git email
   git_config:
     name: user.email
@@ -5,6 +13,7 @@
     value: "samuel.kunst@gmail.com"
   tags:
   - git
+
 - name: Setup Git name
   git_config:
     name: user.name
@@ -12,23 +21,91 @@
     value: "Samuel Kunst"
   tags:
   - git
+
 - name: Setup Git commit alias
   git_config:
     name: alias.ci
     scope: global
     value: commit
+  tags:
+  - git
+
 - name: Setup Git status alias
   git_config:
     name: alias.s
     scope: global
     value: status
+  tags:
+  - git
+
+- name: Setup Git log alias
+  git_config:
+    name: alias.lg
+    scope: global
+    value: log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  tags:
+  - git
+
 - name: Setup Git commit signing
   git_config:
     name: commit.gpgsign
     scope: global
     value: true
+  tags:
+  - git
+
 - name: Configure Git credential provider
   git_config:
     name: credential.provider
     scope: global
     value: generic
+  tags:
+  - git
+
+- name: Enable rebase on pull
+  git_config:
+    name: pull.rebase
+    scope: global
+    value: true
+  tags:
+  - git
+
+- name: Enable auto-stash on rebase
+  git_config:
+    name: rebase.autoStash
+    scope: global
+    value: true
+  tags:
+  - git
+
+- name: Enable auto-stash on rebase
+  git_config:
+    name: rebase.autoStash
+    scope: global
+    value: true
+  tags:
+  - git
+
+- name: Set default editor to nvim
+  git_config:
+    name: core.editor
+    scope: global
+    value: nvim
+  tags:
+  - git
+
+- name: Define global gitignore file location
+  git_config:
+    name: core.excludesFile
+    scope: global
+    value: ~/.config/git/ignore
+  tags:
+  - git
+
+- name: Set default pager
+  git_config:
+    name: core.pager
+    scope: global
+    value: bat --style=plain
+  tags:
+  - git
