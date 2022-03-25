@@ -1,3 +1,4 @@
+---
 - name: Clone DWM
   ansible.builtin.git:
     repo: 'git@github.com:Toalaah/dwm.git'

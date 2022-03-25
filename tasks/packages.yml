@@ -1,3 +1,4 @@
+---
 - name: Install common packages (across all systems)
   become: true
   pacman:

@@ -1,3 +1,4 @@
+---
 - name: Clone configurations
   ansible.builtin.git:
     repo: 'git@github.com:Toalaah/config.git'

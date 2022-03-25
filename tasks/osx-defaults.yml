@@ -1,3 +1,4 @@
+---
 - osx_defaults:
     domain: /Library/Preferences/com.apple.SoftwareUpdate
     key: AutomaticCheckEnabled
@@ -12,3 +13,8 @@
     type: int
     value: 1
 
+- osx_defaults:
+    domain: com.apple.Dock
+    key: autohide
+    type: bool
+    value: True
