@@ -1,57 +1,18 @@
 ---
-- name: Clone DWM
-  ansible.builtin.git:
-    repo: 'git@github.com:Toalaah/dwm.git'
-    dest: "{{ lookup('env', 'HOME') }}/.config/dwm"
-    recursive: yes
-    track_submodules: yes
-    accept_newhostkey: yes
-    version: HEAD
-- name: Build DWM
-  make:
-    chdir: "{{ lookup('env', 'HOME') }}/.config/dwm"
-    target: install
-  become: true
+- set_fact:
+    installation_dir: "{{lookup('env', 'HOME') }}/.config"
+    progs:
+      - { name: 'dwm',       repo: 'git@github.com:Toalaah/dwm.git' }
+      - { name: 'st',        repo: 'git@github.com:Toalaah/st.git' }
+      - { name: 'dwmblocks', repo: 'git@github.com:Toalaah/dwmblocks.git' }
+      - { name: 'dmenu',     repo: 'git@github.com:Toalaah/dmenu.git' }
 
-- name: Clone ST
-  ansible.builtin.git:
-    repo: 'git@github.com:Toalaah/st.git'
-    dest: "{{ lookup('env', 'HOME') }}/.config/st"
-    recursive: yes
-    track_submodules: yes
-    accept_newhostkey: yes
-    version: HEAD
-- name: Build ST
-  make:
-    chdir: "{{ lookup('env', 'HOME') }}/.config/st"
-    target: install
-  become: true
+- name: clone suckless programs
+  ansible.builtin.git: { repo: "{{ item.repo }}", dest: "{{ installation_dir }}/{{ item.name }}", accept_newhostkey: 'yes' }
+  loop: "{{ progs }}"
 
-- name: Clone DWMBlocks
-  ansible.builtin.git:
-    repo: 'git@github.com:Toalaah/dwmblocks.git'
-    dest: "{{ lookup('env', 'HOME') }}/.config/dwmblocks"
-    recursive: yes
-    track_submodules: yes
-    accept_newhostkey: yes
-    version: HEAD
-- name: Build ST
-  make:
-    chdir: "{{ lookup('env', 'HOME') }}/.config/dwmblocks"
-    target: install
-  become: true
-
-- name: Clone Dmenu
-  ansible.builtin.git:
-    repo: 'git@github.com:Toalaah/dmenu.git'
-    dest: "{{ lookup('env', 'HOME') }}/.config/dmenu"
-    recursive: yes
-    track_submodules: yes
-    accept_newhostkey: yes
-    version: HEAD
-- name: Build ST
-  make:
-    chdir: "{{ lookup('env', 'HOME') }}/.config/dmenu"
-    target: install
+- name: build suckless programs
+  make: { chdir: "{{ installation_dir }}/{{ item.name }}", target: install }
+  loop: "{{ progs }}"
   become: true
 
