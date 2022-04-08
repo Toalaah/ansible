@@ -1,6 +1,7 @@
 ---
-- set_fact:
-    installation_dir: "{{lookup('env', 'HOME') }}/.config"
+- name: set variables
+  ansible.builtin.set_fact:
+    installation_dir: "{{ lookup('env', 'HOME') }}/.config"
     progs:
       - { name: 'dwm',       repo: 'git@github.com:Toalaah/dwm.git' }
       - { name: 'st',        repo: 'git@github.com:Toalaah/st.git' }
@@ -15,4 +16,3 @@
   make: { chdir: "{{ installation_dir }}/{{ item.name }}", target: install }
   loop: "{{ progs }}"
   become: true
-

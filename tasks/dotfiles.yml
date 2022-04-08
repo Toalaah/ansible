@@ -3,13 +3,12 @@
   ansible.builtin.git:
     repo: 'git@github.com:Toalaah/config.git'
     dest: "{{ lookup('env', 'HOME') }}/.local/dotfiles"
-    recursive: yes # fetch all submodules
-    track_submodules: yes
-    accept_newhostkey: yes
-    version: HEAD
+    recursive: true # fetch all submodules
+    track_submodules: true
+    accept_newhostkey: true
 
 - name: stow dotfiles
-  shell: "stow --verbose=1 --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
+  ansible.builtin.shell: "stow --verbose=1 --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
   loop:
     - { name: 'alacritty' }
     - { name: 'bat' }
