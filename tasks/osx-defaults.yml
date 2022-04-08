@@ -1,20 +1,30 @@
 ---
-- osx_defaults:
-    domain: /Library/Preferences/com.apple.SoftwareUpdate
-    key: AutomaticCheckEnabled
-    type: int
-    value: 1
-  become: true
+- block:
+  - name: disable automatic software update checks
+    osx_defaults:
+      domain: /Library/Preferences/com.apple.SoftwareUpdate
+      key: AutomaticCheckEnabled
+      type: int
+      value: 0
+    become: true
 
-- osx_defaults:
-    domain: com.apple.screensaver
-    host: currentHost
-    key: showClock
-    type: int
-    value: 1
+  - name: show clock on screensaver
+    osx_defaults:
+      domain: com.apple.screensaver
+      host: currentHost
+      key: showClock
+      type: int
+      value: 1
 
-- osx_defaults:
-    domain: com.apple.Dock
-    key: autohide
-    type: bool
-    value: True
+  - name: configure dock
+    osx_defaults: { domain: 'com.apple.dock', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
+    loop:
+      - { key: 'tilesize', type: 'int',  value: '24' }
+      - { key: 'autohide', type: 'bool', value: 'true' }
+
+  - name: configure keyboard
+    osx_defaults: { domain: 'NSGlobalDomain', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
+    loop:
+      - { key: 'KeyRepeat',        type: 'int', value: '2' }
+      - { key: 'InitialKeyRepeat', type: 'int', value: '15' }
+
