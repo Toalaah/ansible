@@ -1,12 +1,19 @@
 # Ansible
 
-Ansible configuration for my macOS and Archlinux configurations.
+Ansible configuration for my macOS and Arch Linux configurations.
 
 ---
 
-**Requirements**
+## Requirements
 
 - ansible
+
+## Running the Playbook
+
+**Optional:** if running on an Arch Linux machine, install the
+[ansible-aur](https://github.com/kewlfft/ansible-aur) helper with
+`ansible-galaxy collection install -r requirements.yml` in order to download /
+update packages.
 
 To run the playbook, run `ansible-playbook --ask-become-pass playbook.yml` from
 the project root directory.
