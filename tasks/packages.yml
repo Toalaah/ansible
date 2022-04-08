@@ -1,5 +1,5 @@
 ---
-- name: Install common packages (across all systems)
+- name: install common packages (across all systems)
   become: true
   pacman:
     name:
@@ -34,10 +34,8 @@
       - "ungoogled-chromium"
       - "unzip"
       - "zsh"
-  tags:
-    - install
-    - packages
-- name: Install additional packages (Arch only)
+
+- name: install additional packages (arch only)
   become: true
   pacman:
     name:
@@ -53,7 +51,11 @@
       - "zathura"
       - "zathura-pdf-mupdf"
   when: ansible_facts['os_family'] == "Archlinux"
-  tags:
-    - install
-    - packages
+
+- name: install additional packages (mac-os only)
+  community.general.homebrew:
+    name:
+      - "the-unarchiver"
+  when: ansible_facts['os_family'] == "Darwin"
+
 

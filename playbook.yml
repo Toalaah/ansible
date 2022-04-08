@@ -1,33 +1,33 @@
 ---
 - hosts: localhost
   # pre_tasks:
-  # - name: Update system
+  # - name: update system (arch)
   #   become: true
   #   pacman:
   #     update_cache: true
   #     upgrade: true
-  #   tags:
-  #     - install
-  #     - core
-  tasks:
-    # - include_tasks: tasks/base.yml
-    #   name: Setup Base Packages
+  #   when: ansible_facts['os_family'] == "Archlinux"
+  #
+  # - name: update system (mac-os)
+  #   community.general.homebrew:
+  #   update_homebrew: yes
+  #   when: ansible_facts['os_family'] == "Darwin"
 
-    - include_tasks: tasks/osx-defaults.yml
-      name: Setup OSX Defaults
+  tasks:
+    # - name: setup base packages
+    #   include_tasks: tasks/base.yml
+    #
+    - name: setup osx defaults
+      include_tasks: tasks/osx-defaults.yml
       when: ansible_facts['os_family'] == "Darwin"
 
-    - include_tasks: tasks/git.yml
-      name: Configure git config
+    - name: configure git config
+      include_tasks: tasks/git.yml
 
-    - include_tasks: tasks/suckless.yml
-      name: Configure suckless programs
+    - name: configure suckless programs
+      include_tasks: tasks/suckless.yml
       when: ansible_facts['os_family'] == "Archlinux" or ansible_facts['os_family'] == "Ubuntu"
 
-    - include_tasks: tasks/dotfiles.yml
-      name: Clone and symlink dotfiles
+    - name: clone and symlink dotfiles
+      include_tasks: tasks/dotfiles.yml
 
-    # - include: tasks/packages.yml
-    # - include: tasks/node.yml
-    # - include: tasks/go.yml
-    # - include: tasks/nvim.yml
