@@ -81,13 +81,14 @@
   become: true
   kewlfft.aur.aur:
     name:
-      - "nordvpn-bin"
       - "binutils"
+      - "compton"
       - "dhcpcd"
       - "dunst"
       - "feh"
       - "mpv"
       - "ncdu"
+      - "nordvpn-bin"
       - "nvidia"
       - "nvidia-settings"
       - "nvidia-utils"
