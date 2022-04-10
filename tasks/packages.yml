@@ -89,6 +89,7 @@
       - "mpv"
       - "ncdu"
       - "nordvpn-bin"
+      - "noto-fonts-cjk"
       - "nvidia"
       - "nvidia-settings"
       - "nvidia-utils"
