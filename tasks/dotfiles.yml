@@ -8,7 +8,7 @@
     accept_newhostkey: true
 
 - name: stow dotfiles
-  ansible.builtin.shell: "stow --verbose=1 --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
+  ansible.builtin.shell: "stow --verbose=1 --restow --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
   loop:
     - { name: 'alacritty' }
     - { name: 'bat' }
@@ -22,4 +22,4 @@
     - { name: 'zathura' }
     - { name: 'zsh' }
   register: stow
-  changed_when: "'LINK' in stow.stderr"
+  changed_when: "'reverts previous action' not in stow.stderr"
