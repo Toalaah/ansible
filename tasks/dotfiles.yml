@@ -8,7 +8,7 @@
     accept_newhostkey: true
 
 - name: stow dotfiles
-  ansible.builtin.shell: "stow --verbose=1 --restow --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
+  ansible.builtin.shell: "stow --verbose=1 --restow --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }} 2>&1 | grep -v 'BUG in find_stowed_path'"
   loop:
     - { name: 'alacritty' }
     - { name: 'bat' }
