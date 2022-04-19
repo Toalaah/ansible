@@ -8,7 +8,7 @@
     accept_newhostkey: true
 
 - name: stow dotfiles
-  ansible.builtin.shell: "stow --verbose=1 --restow --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }} 2>&1 | grep -v 'BUG in find_stowed_path'"
+  ansible.builtin.shell: "stow --verbose=1 --restow --dir=$HOME/.local/dotfiles --target=$HOME {{ item.name }}"
   loop:
     - { name: 'alacritty' }
     - { name: 'bat' }
@@ -23,3 +23,4 @@
     - { name: 'zsh' }
   register: stow
   changed_when: "'reverts previous action' not in stow.stderr"
+  failed_when: "'ERROR' in stow.stderr"
