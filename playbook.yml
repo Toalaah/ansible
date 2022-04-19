@@ -17,6 +17,11 @@
   tasks:
     - name: setup base packages
       include_tasks: tasks/packages.yml
+      vars:
+        common: "{{ lookup('file', './files/proglist-common.txt').splitlines() }}"
+        arch: "{{ lookup('file', './files/proglist-arch.txt').splitlines() }}"
+        macos: "{{ lookup('file', './files/proglist-macos.txt').splitlines() }}"
+
 
     - name: setup osx defaults
       include_tasks: tasks/osx-defaults.yml

@@ -1,132 +1,20 @@
 ---
-- name: install common packages (arch)
-  become: true
-  kewlfft.aur.aur:
-    name:
-      - "lazydocker"
-      - "lazygit"
-      - "ungoogled-chromium"
-      - "alacritty"
-      - "bat"
-      - "clang"
-      - "cowsay"
-      - "docker"
-      - "docker"
-      - "docker-compose"
-      - "exa"
-      - "fd"
-      - "feh"
-      - "fzf"
-      - "git"
-      - "glow"
-      - "gnupg"
-      - "go"
-      - "htop"
-      - "jq"
-      - "lf"
-      - "mpv"
-      - "neofetch"
-      - "npm"
-      - "openssh"
-      - "pass"
-      - "ripgrep"
-      - "shellcheck"
-      - "stow"
-      - "tldr"
-      - "tmux"
-      - "unzip"
-      - "zoxide"
-      - "zsh"
+- name: install packages (arch linux)
   when: ansible_facts['os_family'] == "Archlinux"
+  block:
+  - name: install common packages
+    kewlfft.aur.aur:
+      name: "{{ common }}"
+  - name: install additional packages
+    kewlfft.aur.aur:
+      name: "{{ arch }}"
 
-- name: install common packages (mac-os)
-  community.general.homebrew:
-    name:
-      - "alacritty"
-      - "bat"
-      - "clang"
-      - "cowsay"
-      - "docker"
-      - "docker"
-      - "docker-compose"
-      - "exa"
-      - "fd"
-      - "feh"
-      - "fzf"
-      - "git"
-      - "glow"
-      - "gnupg"
-      - "go"
-      - "htop"
-      - "jq"
-      - "lazydocker"
-      - "lazygit"
-      - "lf"
-      - "mpv"
-      - "neofetch"
-      - "npm"
-      - "openssh"
-      - "pass"
-      - "ripgrep"
-      - "shellcheck"
-      - "stow"
-      - "tldr"
-      - "tmux"
-      - "unzip"
-      - "zoxide"
-      - "zsh"
+- name: install packages (mac-os)
   when: ansible_facts['os_family'] == "Darwin"
-
-- name: install additional packages (arch only)
-  become: true
-  kewlfft.aur.aur:
-    name:
-      - "binutils"
-      - "compton"
-      - "dhcpcd"
-      - "dunst"
-      - "feh"
-      - "mpv"
-      - "ncdu"
-      - "nordvpn-bin"
-      - "noto-fonts-cjk"
-      - "nvidia"
-      - "nvidia-settings"
-      - "nvidia-utils"
-      - "opencl-nvidia"
-      - "pacman-contrib"
-      - "pipewire"
-      - "pipewire-alsa"
-      - "pipewire-pulse"
-      - "qbittorrent"
-      - "redshift"
-      - "scrot"
-      - "slock"
-      - "ttf-arphic-uming"
-      - "ttf-baekmuk"
-      - "ttf-joypixels"
-      - "ttf-symbola"
-      - "unclutter"
-      - "xclip"
-      - "xcompmgr"
-      - "xdotool"
-      - "xdotool"
-      - "xorg-server"
-      - "xorg-server-devel"
-      - "xorg-xinit"
-      - "xorg-xrandr"
-      - "xorg-xset"
-      - "xurls"
-      - "yay-bin"
-      - "zathura"
-      - "zathura-pdf-mupdf"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: install additional packages (mac-os only)
-  community.general.homebrew:
-    name:
-      - "the-unarchiver"
-      - "vlc"
-  when: ansible_facts['os_family'] == "Darwin"
-
-
+  block:
+  - name: install common packages
+    community.general.homebrew:
+      name: "{{ common }}"
+  - name: install additional packages
+    community.general.homebrew:
+      name: "{{ macos }}"
