@@ -10,7 +10,7 @@
 
   - name: update system (mac-os)
     community.general.homebrew:
-      update-brew: true
+      update_homebrew: true
       upgrade: true
     when: ansible_facts['os_family'] == "Darwin"
 
