@@ -7,7 +7,7 @@
       - { name: 'user.email',          scope: 'global', value: 'samuel.kunst@gmail.com' }
       - { name: 'user.name',           scope: 'global', value: 'Samuel Kunst'}
       - { name: 'alias.ci',            scope: 'global', value: 'commit' }
-      - { name: 'alias.s',             scope: 'global', value: 'status' }
+      - { name: 'alias.s',             scope: 'global', value: 'status --short' }
       - { name: 'alias.lg',            scope: 'global', value: 'log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative' }
       - { name: 'commit.gpgsign',      scope: 'global', value: 'true' }
       - { name: 'credential.provider', scope: 'global', value: 'generic' }
