@@ -14,6 +14,7 @@ gnupg
 go
 htop
 jq
+kitty
 lazydocker
 lazygit
 lf
