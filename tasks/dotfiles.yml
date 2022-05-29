@@ -13,6 +13,8 @@
     - { name: 'alacritty' }
     - { name: 'bat' }
     - { name: 'chromium' }
+    - { name: 'kitty' }
+    - { name: 'neomutt' }
     - { name: 'nvim' }
     - { name: 'picom' }
     - { name: 'scripts' }
