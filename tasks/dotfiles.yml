@@ -1,7 +1,7 @@
 ---
 - name: clone configurations
   ansible.builtin.git:
-    repo: 'git@github.com:Toalaah/config.git'
+    repo: 'https://github.com/toalaah/config.git'
     dest: "{{ lookup('env', 'HOME') }}/.local/dotfiles"
     recursive: true # fetch all submodules
     track_submodules: true
