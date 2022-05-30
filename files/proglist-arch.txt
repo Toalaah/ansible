@@ -19,6 +19,7 @@ qbittorrent
 redshift
 scrot
 slock
+sxiv
 ttf-arphic-uming
 ttf-baekmuk
 ttf-joypixels
