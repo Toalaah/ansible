@@ -3,10 +3,10 @@
   ansible.builtin.set_fact:
     installation_dir: "{{ lookup('env', 'HOME') }}/.config"
     progs:
-      - { name: 'dwm',       repo: 'git@github.com:Toalaah/dwm.git' }
-      - { name: 'st',        repo: 'git@github.com:Toalaah/st.git' }
-      - { name: 'dwmblocks', repo: 'git@github.com:Toalaah/dwmblocks.git' }
-      - { name: 'dmenu',     repo: 'git@github.com:Toalaah/dmenu.git' }
+      - { name: 'dwm',       repo: 'https://github.com/toalaah/dwm.git' }
+      - { name: 'st',        repo: 'https://github.com/toalaah/st.git' }
+      - { name: 'dwmblocks', repo: 'https://github.com/toalaah/dwmblocks.git' }
+      - { name: 'dmenu',     repo: 'https://github.com/toalaah/dmenu.git' }
 
 - name: clone suckless programs
   ansible.builtin.git: { repo: "{{ item.repo }}", dest: "{{ installation_dir }}/{{ item.name }}", accept_newhostkey: 'yes' }
