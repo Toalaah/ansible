@@ -12,6 +12,7 @@ nvidia-settings
 nvidia-utils
 opencl-nvidia
 pacman-contrib
+pamixer
 pipewire
 pipewire-alsa
 pipewire-pulse
