@@ -15,6 +15,7 @@ pacman-contrib
 pipewire
 pipewire-alsa
 pipewire-pulse
+python-pywal
 qbittorrent
 redshift
 scrot
