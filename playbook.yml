@@ -22,7 +22,6 @@
         arch: "{{ lookup('file', './files/proglist-arch.txt').splitlines() }}"
         macos: "{{ lookup('file', './files/proglist-macos.txt').splitlines() }}"
 
-
     - name: setup osx defaults
       include_tasks: tasks/osx-defaults.yml
       when: ansible_facts['os_family'] == "Darwin"
@@ -36,3 +35,6 @@
 
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml
+
+    - name: install chromium
+      include_tasks: tasks/chromium.yml

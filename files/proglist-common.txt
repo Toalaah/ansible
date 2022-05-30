@@ -29,7 +29,6 @@ stow
 stylua
 tldr
 tmux
-ungoogled-chromium
 unzip
 zoxide
 zsh

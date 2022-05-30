@@ -1,0 +1,31 @@
+---
+- name: install chromium (arch linux)
+  block:
+    - name: import chromium key
+      community.general.pacman_key:
+        # the following command will output the key-id should it ever change
+        # curl -s '<url>' | gpg --show-keys -
+        id: 157C212D66D9B95118C5EDD302456C79B2FD48BF
+        url: https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key
+        state: present
+    - name: add chromium package repository
+      blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [home_ungoogled_chromium_Arch]
+          SigLevel = Required TrustAll
+          Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch
+      become: true
+    - name: install chromium
+      become: true
+      community.general.pacman:
+        update_cache: true
+        name: ungoogled-chromium
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: install chromium (mac-os)
+  block:
+    - name: install chromium
+      community.general.homebrew_cask:
+        name: homebrew/cask/eloston-chromium
+  when: ansible_facts['os_family'] == "Darwin"
