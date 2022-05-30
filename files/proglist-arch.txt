@@ -33,6 +33,5 @@ xorg-server-devel
 xorg-xinit
 xorg-xrandr
 xorg-xset
-yay-bin
 zathura
 zathura-pdf-mupdf
