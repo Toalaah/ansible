@@ -1,5 +1,6 @@
 ---
-- block:
+- name: setup git config
+  block:
   - name: configure git
     git_config: { name: "{{ item.name }}", scope: "{{ item.scope }}", value: "{{ item.value }}" }
     loop:

@@ -1,5 +1,6 @@
 ---
-- block:
+- name: setup osx defaults
+  block:
   - name: disable automatic software update checks
     osx_defaults:
       domain: /Library/Preferences/com.apple.SoftwareUpdate
