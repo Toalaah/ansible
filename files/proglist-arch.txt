@@ -3,6 +3,7 @@ compton
 dhcpcd
 dunst
 feh
+jsoncpp
 mpv
 ncdu
 nordvpn-bin
