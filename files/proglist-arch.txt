@@ -4,6 +4,9 @@ dhcpcd
 dunst
 feh
 jsoncpp
+libx11
+libxft
+libxinerama
 mpv
 ncdu
 nordvpn-bin
@@ -28,14 +31,15 @@ ttf-baekmuk
 ttf-joypixels
 ttf-symbola
 unclutter
+webkit2gtk
 xclip
 xcompmgr
 xdotool
 xdotool
 xorg-server
-xorg-server-devel
 xorg-xinit
 xorg-xrandr
 xorg-xset
+yajl
 zathura
 zathura-pdf-mupdf
