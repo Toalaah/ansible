@@ -17,6 +17,7 @@
     - { name: 'neomutt' }
     - { name: 'nvim' }
     - { name: 'picom' }
+    - { name: 'polybar' }
     - { name: 'scripts' }
     - { name: 'tmux' }
     - { name: 'wallpapers' }

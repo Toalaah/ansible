@@ -21,3 +21,10 @@ the project root directory.
 > **Note:** This playbook is designed to run on local machines, although it is
 > probably also possible to run this on a remove one with some configuration
 > tweaks.
+
+## TODOS
+
+- Change shell automatically
+- Install yay (aur helper) automatically
+- Install fonts automatically
+
