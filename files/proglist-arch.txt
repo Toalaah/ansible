@@ -20,6 +20,7 @@ pamixer
 pipewire
 pipewire-alsa
 pipewire-pulse
+polybar-dwm-module
 python-pywal
 qbittorrent
 redshift
