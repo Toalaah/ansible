@@ -18,6 +18,7 @@
     - { name: 'nvim' }
     - { name: 'picom' }
     - { name: 'polybar' }
+    - { name: 'ripgrep' }
     - { name: 'scripts' }
     - { name: 'tmux' }
     - { name: 'wallpapers' }
