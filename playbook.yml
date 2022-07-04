@@ -1,5 +1,9 @@
 ---
-- hosts: localhost
+- hosts: local
+
+  vars_files:
+      - config.yml
+
   pre_tasks:
   - name: update system (arch)
     become: true
@@ -21,23 +25,28 @@
         common: "{{ lookup('file', './files/proglist-common.txt').splitlines() }}"
         arch: "{{ lookup('file', './files/proglist-arch.txt').splitlines() }}"
         macos: "{{ lookup('file', './files/proglist-macos.txt').splitlines() }}"
+      when: configure_packages
 
     - name: setup osx defaults
       include_tasks: tasks/osx-defaults.yml
-      when: ansible_facts['os_family'] == "Darwin"
+      when: configure_osx and ansible_facts['os_family'] == "Darwin"
 
     - name: set user shell
       include_tasks: tasks/shell.yml
+      when: configure_default_shell
 
     - name: configure git config
       include_tasks: tasks/git.yml
+      when: configure_git
 
     - name: configure suckless programs
       include_tasks: tasks/suckless.yml
-      when: ansible_facts['os_family'] == "Archlinux" or ansible_facts['os_family'] == "Ubuntu"
+      when: configure_window_manager and (ansible_facts['os_family'] == "Archlinux" or ansible_facts['os_family'] == "Ubuntu")
 
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml
+      when: configure_dotfiles
 
     - name: install chromium
       include_tasks: tasks/chromium.yml
+      when: configure_browser

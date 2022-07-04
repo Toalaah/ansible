@@ -1,0 +1,32 @@
+---
+# clone and configure dotfiles using gnu stow
+configure_dotfiles: true
+configure_window_manager: true
+configure_osx: true
+configure_default_shell: true
+default_shell_path: '/bin/zsh/'
+configure_git: true
+configure_browser: true
+configure_yarn: false
+configure_npm: false
+configure_go: false
+configure_sudoers: false
+sudoers_custom_config: |
+  # Allow users in admin group to use sudo with no password
+  %admin ALL=(ALL) NOPASSWD: ALL
+  # Allow users in wheel group to use sudo with no password
+  %wheel ALL=(ALL) NOPASSWD: ALL
+
+configure_packages: false
+homebrew:
+  taps:
+    - homebrew/core
+    - homebrew/cask
+  packages:
+    - stow
+  casks_dir: /Applications
+  casks:
+    - alacritty
+
+npm_packages: []
+pip_packages: []
