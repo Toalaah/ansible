@@ -26,6 +26,9 @@
       include_tasks: tasks/osx-defaults.yml
       when: ansible_facts['os_family'] == "Darwin"
 
+    - name: set user shell
+      include_tasks: tasks/shell.yml
+
     - name: configure git config
       include_tasks: tasks/git.yml
 
