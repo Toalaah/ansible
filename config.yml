@@ -4,7 +4,7 @@ configure_dotfiles: true
 configure_window_manager: true
 configure_osx: true
 configure_default_shell: true
-default_shell_path: '/bin/zsh/'
+default_shell_path: '/bin/zsh'
 configure_git: true
 configure_browser: true
 configure_yarn: false
