@@ -1,5 +1,4 @@
 ---
-# clone and configure dotfiles using gnu stow
 configure_dotfiles: true
 configure_window_manager: true
 configure_osx: true

@@ -24,7 +24,6 @@ the project root directory.
 
 ## TODOS
 
-- Change shell automatically
 - Install yay (aur helper) automatically
 - Install fonts automatically
 
