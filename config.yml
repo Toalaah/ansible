@@ -1,4 +1,7 @@
 ---
+# Update system before running playbook
+pre_update: false
+
 dotfiles:
   configure_dotfiles: true
   packages:
