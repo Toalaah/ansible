@@ -33,7 +33,7 @@
 
     - name: set user shell
       include_tasks: tasks/shell.yml
-      when: configure_default_shell
+      when: shell.configure_default_shell
 
     - name: configure git config
       include_tasks: tasks/git.yml

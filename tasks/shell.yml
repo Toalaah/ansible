@@ -3,4 +3,4 @@
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
-    shell: "{{ default_shell_path }}"
+    shell: "{{ shell.default_shell_path }}"
