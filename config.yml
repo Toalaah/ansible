@@ -1,7 +1,7 @@
 ---
 # Update system before running playbook
 pre_update: false
-
+# Install dotfiles for the specified packages using GNU Stow
 dotfiles:
   configure_dotfiles: true
   packages:
@@ -19,7 +19,7 @@ dotfiles:
     - x11
     - zathura
     - zsh
-
+# Clone and build various suckless utilities
 suckless:
   # Note that enabling this has no effect if running on a non-linux machine
   configure_suckless: true
@@ -35,18 +35,24 @@ suckless:
     - st
     - dwmblocks
     - dmenu
-
-
+# Set various osx defaults
 configure_osx: true
+# Configures the current user's default shell
 shell:
   configure_default_shell: true
-  default_shell_path: '/bin/zsh'
+  default_shell_path: /bin/zsh
+# Set various git aliases / preferences
 configure_git: true
+# Install ungoogled-chromium
 configure_browser: true
-configure_yarn: false
-configure_npm: false
-configure_go: false
-
+# Configure the Yarn package manager
+yarn:
+  # Note that enabling this option implies the enabling npm.configure_npm
+  configure_yarn: false
+  version: v1.22.19
+# Configure the NPM package manager
+npm:
+  configure_npm: false
 # Clone and build neovim from source
 neovim:
   configure_neovim: true
@@ -57,7 +63,7 @@ neovim:
   clone_destination: repos/neovim
   # Can be one of: Release | RelWithDebInfo | Debug
   build_type: Release
-
+# Configure group properties in /etc/sudoers
 sudoers:
   configure_sudoers: true
   custom_config: |
