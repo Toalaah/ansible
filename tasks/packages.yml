@@ -1,10 +1,16 @@
 ---
+- name: set variables
+  ansible.builtin.set_fact:
+    base: "{{ lookup('file', packages.package_lists.base).splitlines() }}"
+    arch: "{{ lookup('file', packages.package_lists.arch).splitlines() }}"
+    osx: "{{ lookup('file', packages.package_lists.osx).splitlines() }}"
+
 - name: install packages (arch linux)
   when: ansible_facts['os_family'] == "Archlinux"
   block:
   - name: install common packages
     kewlfft.aur.aur:
-      name: "{{ common }}"
+      name: "{{ base }}"
   - name: install additional packages
     kewlfft.aur.aur:
       name: "{{ arch }}"
@@ -14,7 +20,7 @@
   block:
   - name: install common packages
     community.general.homebrew:
-      name: "{{ common }}"
+      name: "{{ base }}"
   - name: install additional packages
     community.general.homebrew:
-      name: "{{ macos }}"
+      name: "{{ osx }}"

@@ -65,17 +65,15 @@ sudoers:
     %admin ALL=(ALL) NOPASSWD: ALL
     # Allow users in wheel group to use sudo with no password
     %wheel ALL=(ALL) NOPASSWD: ALL
-
-configure_packages: false
-homebrew:
-  taps:
-    - homebrew/core
-    - homebrew/cask
-  packages:
-    - stow
-  casks_dir: /Applications
-  casks:
-    - alacritty
-
-npm_packages: []
-pip_packages: []
+# Ensure that the specified packages are always installed
+packages:
+  configure_packages: true
+  # Specify the package lists
+  # Relative to base directory of the playbook
+  package_lists:
+    # Programs that are installed regardless of OS
+    base: ./files/proglist-common.txt
+    # Programs specific to Arch Linux machines
+    arch: ./files/proglist-arch.txt
+    # Programs specific to macOS machines
+    osx: ./files/proglist-macos.txt
