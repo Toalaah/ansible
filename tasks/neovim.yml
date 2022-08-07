@@ -1,0 +1,27 @@
+---
+- name: set variables
+  set_fact:
+    installation_dir: "{{ lookup('env', 'HOME') }}/{{ neovim.clone_destination }}"
+    build_type: "{{ neovim.build_type }}"
+    version:  "{{ neovim.version }}"
+
+- name: setup neovim
+  block:
+  - name: clone neovim repository
+    ansible.builtin.git:
+      repo: 'https://github.com/neovim/neovim.git'
+      dest: "{{ installation_dir }}"
+      version: "{{ version }}"
+
+  - name: build neovim
+    make:
+      chdir: "{{ installation_dir }}"
+      params:
+        CMAKE_BUILD_TYPE: "{{ build_type }}"
+    become: true
+
+  - name: install neovim
+    make:
+      chdir: "{{ installation_dir }}"
+      target: install
+    become: true

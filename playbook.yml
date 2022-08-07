@@ -51,6 +51,10 @@
       include_tasks: tasks/sudoers.yml
       when: sudoers.configure_sudoers
 
+    - name: setup neovim
+      include_tasks: tasks/neovim.yml
+      when: neovim.configure_neovim
+
     - name: install chromium
       include_tasks: tasks/chromium.yml
       when: configure_browser

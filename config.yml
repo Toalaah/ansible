@@ -26,9 +26,18 @@ configure_browser: true
 configure_yarn: false
 configure_npm: false
 configure_go: false
+
+# Clone and build neovim from source
 neovim:
-  configure_neovim: false
-  build_from_commit: 'HEAD'
+  configure_neovim: true
+  # Set to a specific commit SHA, tag, branch, etc.
+  # For latest stable release, set to 'stable'
+  version: HEAD
+  # Destination is relative to user's $HOME
+  clone_destination: repos/neovim
+  # Can be one of: Release | RelWithDebInfo | Debug
+  build_type: Release
+
 sudoers:
   configure_sudoers: true
   custom_config: |
