@@ -16,7 +16,24 @@ dotfiles:
     - x11
     - zathura
     - zsh
-configure_window_manager: true
+
+suckless:
+  # Note that enabling this has no effect if running on a non-linux machine
+  configure_suckless: true
+  # Where to install programs to.
+  # Destination is relative to user's $HOME
+  installation_dir: .config
+  # Git repository prefix to use.
+  repo_prefix: https://github.com/toalaah
+  # Which suckless programs to install.
+  # Programs are cloned via the schema: {repo_prefix}/{program}.git
+  programs:
+    - dwm
+    - st
+    - dwmblocks
+    - dmenu
+
+
 configure_osx: true
 shell:
   configure_default_shell: true

@@ -41,7 +41,7 @@
 
     - name: configure suckless programs
       include_tasks: tasks/suckless.yml
-      when: configure_window_manager and not ansible_facts['os_family'] == "Darwin"
+      when: suckless.configure_suckless and not ansible_facts['os_family'] == "Darwin"
 
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml

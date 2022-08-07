@@ -1,16 +1,11 @@
 ---
 - name: set variables
   ansible.builtin.set_fact:
-    installation_dir: "{{ lookup('env', 'HOME') }}/.config"
-    progs:
-      - { name: 'dwm',       repo: 'https://github.com/toalaah/dwm.git' }
-      - { name: 'st',        repo: 'https://github.com/toalaah/st.git' }
-      - { name: 'dwmblocks', repo: 'https://github.com/toalaah/dwmblocks.git' }
-      - { name: 'dmenu',     repo: 'https://github.com/toalaah/dmenu.git' }
+    installation_dir: "{{ lookup('env', 'HOME') }}/{{ suckless.installation_dir }}"
 
 - name: clone suckless programs
-  ansible.builtin.git: { repo: "{{ item.repo }}", dest: "{{ installation_dir }}/{{ item.name }}", accept_newhostkey: 'yes' }
-  loop: "{{ progs }}"
+  ansible.builtin.git: { repo: "{{ suckless.repo_prefix }}/{{ item }}.git", dest: "{{ installation_dir }}/{{ item }}", accept_newhostkey: 'yes' }
+  with_items: "{{ suckless.programs }}"
 
 - name: build suckless programs
   make: { chdir: "{{ installation_dir }}/{{ item.name }}", target: install }
