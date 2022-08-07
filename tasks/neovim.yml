@@ -1,6 +1,6 @@
 ---
 - name: set variables
-  set_fact:
+  ansible.builtin.set_fact:
     installation_dir: "{{ lookup('env', 'HOME') }}/{{ neovim.clone_destination }}"
     build_type: "{{ neovim.build_type }}"
     version:  "{{ neovim.version }}"
