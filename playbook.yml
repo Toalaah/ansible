@@ -45,7 +45,11 @@
 
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml
-      when: configure_dotfiles
+      when: dotfiles.configure_dotfiles
+
+    - name: configure sudoers
+      include_tasks: tasks/sudoers.yml
+      when: sudoers.configure_sudoers
 
     - name: install chromium
       include_tasks: tasks/chromium.yml

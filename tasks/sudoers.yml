@@ -1,0 +1,6 @@
+---
+- name: add custom sudoers config
+  ansible.builtin.blockinfile:
+    path: /etc/sudoers
+    block: "{{ sudoers.custom_config }}"
+  become: true
