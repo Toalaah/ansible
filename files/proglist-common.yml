@@ -1,0 +1,44 @@
+# This file defines common packages which should be installed regardless of OS.
+#
+# As some of these programs are GUI applications, they must be installed as
+# Homebrew casks when on macOS. Hence, we must differentiate these packages via
+# a separate 'casks' array to tell Ansible to install the respective packages
+# as casks rather than normal programs.
+#
+# OSs which don't care about this differentiation (ex. Arch Linux) simply
+# concatenate the two arrays together when installing packages.
+packages:
+  - bat
+  - cowsay
+  - docker
+  - docker-compose
+  - exa
+  - fd
+  - feh
+  - fzf
+  - git
+  - glow
+  - gnupg
+  - go
+  - htop
+  - jq
+  - lazydocker
+  - lazygit
+  - lf
+  - mpv
+  - neofetch
+  - npm
+  - openssh
+  - pass
+  - ripgrep
+  - shellcheck
+  - stow
+  - stylua
+  - tldr
+  - tmux
+  - unzip
+  - zoxide
+  - zsh
+casks:
+  - alacritty
+  - kitty

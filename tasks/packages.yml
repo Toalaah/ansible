@@ -1,26 +1,33 @@
 ---
 - name: set variables
-  ansible.builtin.set_fact:
-    base: "{{ lookup('file', packages.package_lists.base).splitlines() }}"
-    arch: "{{ lookup('file', packages.package_lists.arch).splitlines() }}"
-    osx: "{{ lookup('file', packages.package_lists.osx).splitlines() }}"
+  block:
+    - name: read osx package list
+      ansible.builtin.include_vars:
+        file: "{{ packages.package_lists.osx }}"
+        name: osx
+    - name: read arch package list
+      ansible.builtin.include_vars:
+        file: "{{ packages.package_lists.arch }}"
+        name: arch
+    - name: read common package list
+      ansible.builtin.include_vars:
+        file: "{{ packages.package_lists.common }}"
+        name: common
+
 
 - name: install packages (arch linux)
   when: ansible_facts['os_family'] == "Archlinux"
   block:
-  - name: install common packages
+  - name: install packages
     kewlfft.aur.aur:
-      name: "{{ base }}"
-  - name: install additional packages
-    kewlfft.aur.aur:
-      name: "{{ arch }}"
+      name: "{{ arch.packages + common.packages + common.casks }}"
 
 - name: install packages (mac-os)
   when: ansible_facts['os_family'] == "Darwin"
   block:
-  - name: install common packages
+  - name: install casks
+    community.general.homebrew_cask:
+      name: "{{ osx.casks + common.casks }}"
+  - name: install formulae
     community.general.homebrew:
-      name: "{{ base }}"
-  - name: install additional packages
-    community.general.homebrew:
-      name: "{{ osx }}"
+      name: "{{ osx.packages + common.packages }}"

@@ -1,0 +1,10 @@
+# This file defines packages which should be installed exclusively on macOS machines.
+#
+# Packages which must be installed as casks (ex GUI applications) are
+# differentiated from normal packages by being listed in the 'casks' array.
+# Normal CLI applications can be appended to the  'packages' array.
+packages:
+  - llvm
+casks:
+  - the-unarchiver
+  - vlc
