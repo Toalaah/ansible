@@ -20,11 +20,12 @@
   - name: configure dock
     osx_defaults: { domain: 'com.apple.dock', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
     loop:
-      - { key: 'tilesize',                 type: 'float', value: '24'   }
+      - { key: 'tilesize',                 type: 'float', value: '30'   }
       - { key: 'autohide',                 type: 'bool',  value: 'true' }
       - { key: 'autohide-delay',           type: 'float', value: '0'    }
       - { key: 'autohide-time-modifier',   type: 'float', value: '0.5'  }
       - { key: 'appswitcher-all-displays', type: 'bool',  value: 'true' }
+
 
   - name: configure keyboard
     osx_defaults: { domain: 'NSGlobalDomain', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
@@ -32,3 +33,23 @@
       - { key: 'KeyRepeat',        type: 'int', value: '2' }
       - { key: 'InitialKeyRepeat', type: 'int', value: '15' }
 
+
+  - name: configure misc
+    osx_defaults: { domain: 'NSGlobalDomain', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
+    loop:
+      - { key: 'appleShowAllExtensions', type: 'bool', value: 'true' }
+        # save documents to local storage rather than iCloud by default
+      - { key: 'NSDocumentSaveNewDocumentsToCloud', type: 'bool', value: 'false' }
+
+  - name: configure finder
+    osx_defaults: { domain: 'com.apple.finder', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value  }}" }
+    loop:
+      # disable change extension warning
+      - { key: 'FXEnableExtensionChangeWarning', type: 'bool', value: 'false' }
+
+  - name: configure menubar clock
+    osx_defaults:
+      domain: 'com.apple.menuextra.clock'
+      key: DateFormat
+      type: string
+      value: 'EEE MMM d  H:mm'
