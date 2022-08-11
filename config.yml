@@ -4,6 +4,9 @@ pre_update: false
 # Install dotfiles for the specified packages using GNU Stow
 dotfiles:
   configure_dotfiles: true
+  repository: git@github.com:Toalaah/config.git
+  # Destination is relative to user's $HOME
+  clone_destination: .local
   packages:
     - alacritty
     - chromium
@@ -27,7 +30,7 @@ suckless:
   # Destination is relative to user's $HOME
   installation_dir: .config
   # Git repository prefix to use.
-  repo_prefix: https://github.com/toalaah
+  repo_prefix: git@github.com:Toalaah
   # Which suckless programs to install.
   # Programs are cloned via the schema: {repo_prefix}/{program}.git
   programs:
