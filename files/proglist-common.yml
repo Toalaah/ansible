@@ -42,3 +42,4 @@ packages:
 casks:
   - alacritty
   - kitty
+  - spotify
