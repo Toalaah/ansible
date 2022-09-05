@@ -8,6 +8,6 @@
   with_items: "{{ suckless.programs }}"
 
 - name: build suckless programs
-  make: { chdir: "{{ installation_dir }}/{{ item.name }}", target: install }
-  loop: "{{ progs }}"
+  make: { chdir: "{{ installation_dir }}/{{ item }}", target: install }
+  loop: "{{ suckless.programs }}"
   become: true
