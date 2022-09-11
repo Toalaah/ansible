@@ -22,6 +22,11 @@ dotfiles:
     - x11
     - zathura
     - zsh
+# Configure the pacman package manager
+pacman:
+  # Note that enabling this has no effect if running on a non-arch-linux machine
+  configure_pacman: true
+  max_parallel_downloads: 5
 # Clone and build various suckless utilities
 suckless:
   # Note that enabling this has no effect if running on a non-linux machine

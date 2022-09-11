@@ -39,6 +39,10 @@
       include_tasks: tasks/suckless.yml
       when: suckless.configure_suckless and not ansible_facts['os_family'] == "Darwin"
 
+    - name: configure pacman
+      include_tasks: tasks/pacman.yml
+      when: pacman.configure_pacman and ansible_facts['os_family'] == "Archlinux"
+
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml
       when: dotfiles.configure_dotfiles

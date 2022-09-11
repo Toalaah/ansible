@@ -1,0 +1,22 @@
+---
+- name: configure pacman
+  block:
+    - name: enable multilib repository
+      ansible.builtin.blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [multilib]
+          Include= /etc/pacman.d/mirrorlist
+      become: true
+    - name: enable color output
+      ansible.builtin.lineinfile:
+        path: /etc/pacman.conf
+        search_string: '#Color'
+        line: Color
+      become: true
+    - name: configure max parallel downloads
+      ansible.builtin.lineinfile:
+        path: /etc/pacman.conf
+        search_string: '#ParallelDownloads'
+        line: ParallelDownloads={{ pacman.max_parallel_downloads }}
+      become: true
