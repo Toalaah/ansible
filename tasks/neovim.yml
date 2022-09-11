@@ -12,6 +12,7 @@
       repo: 'https://github.com/neovim/neovim.git'
       dest: "{{ installation_dir }}"
       version: "{{ version }}"
+      force: true
 
   - name: build neovim
     make:
