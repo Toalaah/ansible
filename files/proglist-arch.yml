@@ -5,6 +5,7 @@ packages:
   - compton
   - dhcpcd
   - dunst
+  - elinks
   - feh
   - jsoncpp
   - libx11
