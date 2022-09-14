@@ -42,6 +42,7 @@ packages:
   - zsh
 casks:
   - alacritty
+  - discord
   - kitty
   - spotify
   - telegram-desktop
