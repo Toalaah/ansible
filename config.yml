@@ -22,6 +22,9 @@ dotfiles:
     - x11
     - zathura
     - zsh
+# Configure docker
+docker:
+  configure_docker: true
 # Configure the pacman package manager
 pacman:
   # Note that enabling this has no effect if running on a non-arch-linux machine

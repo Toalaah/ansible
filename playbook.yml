@@ -31,6 +31,10 @@
       include_tasks: tasks/shell.yml
       when: shell.configure_default_shell
 
+    - name: configure docker
+      include_tasks: tasks/docker.yml
+      when: docker.configure_docker
+
     - name: configure git config
       include_tasks: tasks/git.yml
       when: configure_git

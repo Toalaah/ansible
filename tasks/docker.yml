@@ -1,0 +1,32 @@
+---
+- name: set variables
+  ansible.builtin.set_fact:
+    user: "{{ lookup('env', 'USER') }}"
+
+- name: install docker
+  block:
+    - name: install (osx)
+      community.general.homebrew:
+        name: docker
+      when: ansible_facts['os_family'] == "Darwin"
+
+    - name: install (arch-linux)
+      kewlfft.aur.aur:
+        name: docker
+      when: ansible_facts['os_family'] == "Archlinux"
+
+- name: add user to docker group
+  become: true
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: docker
+    append: true
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: enable docker systemd service
+  become: true
+  ansible.builtin.systemd:
+    name: docker
+    enabled: yes
+  when: ansible_facts['os_family'] == "Archlinux"
+
