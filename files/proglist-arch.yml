@@ -26,7 +26,7 @@ packages:
   - pipewire
   - pipewire-alsa
   - pipewire-pulse
-  - polybar-dwm-module
+  - polybar
   - python-pywal
   - qbittorrent
   - redshift
