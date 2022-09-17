@@ -42,6 +42,7 @@
     - name: configure suckless programs
       include_tasks: tasks/suckless.yml
       when: suckless.configure_suckless and not ansible_facts['os_family'] == "Darwin"
+      loop: "{{ suckless.programs }}"
 
     - name: configure pacman
       include_tasks: tasks/pacman.yml

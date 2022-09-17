@@ -3,11 +3,21 @@
   ansible.builtin.set_fact:
     installation_dir: "{{ lookup('env', 'HOME') }}/{{ suckless.installation_dir }}"
 
-- name: clone suckless programs
-  ansible.builtin.git: { repo: "{{ suckless.repo_prefix }}/{{ item }}.git", dest: "{{ installation_dir }}/{{ item }}", accept_newhostkey: 'yes' }
-  with_items: "{{ suckless.programs }}"
+- name: configure suckless programs
+  block:
+    - name: clone repository
+      ansible.builtin.git: { repo: "{{ suckless.repo_prefix }}/{{ item }}.git", dest: "{{ installation_dir }}/{{ item }}", accept_newhostkey: 'yes' }
 
-- name: build suckless programs
-  make: { chdir: "{{ installation_dir }}/{{ item }}", target: install }
-  loop: "{{ suckless.programs }}"
-  become: true
+    - name: make
+      make: { chdir: "{{ installation_dir }}/{{ item }}" }
+      changed_when: false
+
+    - name: detect changes
+      make: { chdir: "{{ installation_dir }}/{{ item }}", target: ansible-diff  }
+      register: did_change
+      changed_when: false
+
+    - name: install
+      make: { chdir: "{{ installation_dir }}/{{ item }}", target: install  }
+      when: did_change.stdout|string == 'ANSIBLE_CHANGED_TRUE'
+      become: true
