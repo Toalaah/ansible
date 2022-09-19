@@ -7,6 +7,7 @@ packages:
   - dunst
   - elinks
   - feh
+  - i3lock-color
   - jsoncpp
   - libx11
   - libxft
@@ -47,6 +48,7 @@ packages:
   - xorg-xinit
   - xorg-xrandr
   - xorg-xset
+  - xss-lock
   - yajl
   - zathura
   - zathura-pdf-mupdf
