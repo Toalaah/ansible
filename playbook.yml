@@ -37,7 +37,7 @@
 
     - name: configure git config
       include_tasks: tasks/git.yml
-      when: configure_git
+      when: git.configure_git
 
     - name: configure suckless programs
       include_tasks: tasks/suckless.yml

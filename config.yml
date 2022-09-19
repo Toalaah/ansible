@@ -52,7 +52,11 @@ shell:
   configure_default_shell: true
   default_shell_path: /bin/zsh
 # Set various git aliases / preferences
-configure_git: true
+git:
+  configure_git: true
+  user_email: samuel.kunst@gmail.com
+  user_name: Samuel Kunst
+  default_branch_name: master
 # Install ungoogled-chromium
 configure_browser: true
 # Configure the Yarn package manager
