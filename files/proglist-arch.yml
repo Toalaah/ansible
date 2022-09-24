@@ -36,6 +36,7 @@ packages:
   - sxiv
   - ttf-arphic-uming
   - ttf-baekmuk
+  - ttf-font-awesome
   - ttf-joypixels
   - ttf-symbola
   - unclutter
