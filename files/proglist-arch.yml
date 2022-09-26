@@ -16,6 +16,7 @@ packages:
   - mpv
   - ncdu
   - neomutt
+  - networkmanager
   - nordvpn-bin
   - noto-fonts-cjk
   - nvidia
