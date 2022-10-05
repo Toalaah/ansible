@@ -9,14 +9,14 @@
           Include= /etc/pacman.d/mirrorlist
       become: true
     - name: enable color output
-      ansible.builtin.lineinfile:
+      ansible.builtin.replace:
         path: /etc/pacman.conf
-        search_string: '#Color'
-        line: Color
+        regexp: '^#\s*Color.*$'
+        replace: Color
       become: true
     - name: configure max parallel downloads
-      ansible.builtin.lineinfile:
+      ansible.builtin.replace:
         path: /etc/pacman.conf
-        search_string: '#ParallelDownloads'
-        line: ParallelDownloads={{ pacman.max_parallel_downloads }}
+        regexp: '^#\s*ParallelDownloads.*$'
+        replace: ParallelDownloads={{ pacman.max_parallel_downloads }}
       become: true
