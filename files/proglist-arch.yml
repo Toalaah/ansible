@@ -2,6 +2,7 @@
 packages:
   - binutils
   - clang
+  - cmake
   - compton
   - dhcpcd
   - dunst
@@ -45,7 +46,6 @@ packages:
   - webkit2gtk
   - xclip
   - xcompmgr
-  - xdotool
   - xdotool
   - xorg-server
   - xorg-xinit
