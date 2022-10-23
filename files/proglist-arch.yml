@@ -19,6 +19,7 @@ packages:
   - ncdu
   - neomutt
   - networkmanager
+  - nm-connection-editor
   - nordvpn-bin
   - noto-fonts-cjk
   - nvidia
