@@ -32,7 +32,7 @@ pacman:
 # Clone and build various suckless utilities
 suckless:
   # Note that enabling this has no effect if running on a non-linux machine
-  configure_suckless: true
+  configure_suckless: false
   # Where to install programs to.
   # Destination is relative to user's $HOME
   installation_dir: .config
@@ -69,7 +69,7 @@ npm:
   configure_npm: false
 # Clone and build neovim from source
 neovim:
-  configure_neovim: true
+  configure_neovim: false
   # Set to a specific commit SHA, tag, branch, etc.
   # For latest stable release, set to 'stable'
   version: HEAD
