@@ -21,6 +21,10 @@ dotfiles:
     - x11
     - zathura
     - zsh
+# Configure keyd (key-remapping daemon)
+keyd:
+  # Note that enabling this has no effect if running on a non-linux machine
+  configure_keyd: true
 # Configure docker
 docker:
   configure_docker: true

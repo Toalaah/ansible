@@ -48,6 +48,10 @@
       include_tasks: tasks/pacman.yml
       when: pacman.configure_pacman and ansible_facts['os_family'] == "Archlinux"
 
+    - name: setup keyd
+      include_tasks: tasks/keyd.yml
+      when: keyd.configure_keyd and ansible_facts['os_family'] == "Archlinux"
+
     - name: clone and symlink dotfiles
       include_tasks: tasks/dotfiles.yml
       when: dotfiles.configure_dotfiles
