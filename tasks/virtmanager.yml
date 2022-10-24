@@ -1,0 +1,52 @@
+---
+- name: install virtmanager
+  kewlfft.aur.aur:
+    name:
+      - virt-manager
+      - qemu-desktop
+      - libvirt
+      - edk2-ovmf
+      - dnsmasq
+      - iptables-nft
+    state: present
+
+- name: enable / start libvirt daemon
+  ansible.builtin.systemd:
+      name: libvirtd
+      state: started
+      enabled: yes
+  become: true
+
+- name: add user to libvirt group
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    groups: libvirt
+    append: true
+
+- name: configure libvirt networking socket group
+  ansible.builtin.replace:
+    path: /etc/libvirt/libvirtd.conf
+    regexp: '^#\s*unix_sock_group\s*=.*$'
+    replace: unix_sock_group = "libvirt"
+  become: true
+
+- name: configure libvirt networking rw perms
+  ansible.builtin.replace:
+    path: /etc/libvirt/libvirtd.conf
+    regexp: '^#\s*unix_rw_perms\s*=.*$'
+    replace: unix_rw_perms = '0770'
+  become: true
+
+- name: configure libvirt qemu user prefs
+  ansible.builtin.replace:
+    path: /etc/libvirt/qemu.conf
+    regexp: '^#\s*user\s*=.*$'
+    replace: user = "{{ ansible_user_id }}"
+  become: true
+
+- name: configure libvirt qemu prefs
+  ansible.builtin.replace:
+    path: /etc/libvirt/qemu.conf
+    regexp: '^#\s*group\s*=.*$'
+    replace: group = "{{ ansible_user_id }}"
+  become: true

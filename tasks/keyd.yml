@@ -4,16 +4,11 @@
     name: keyd
     state: present
 
-- name: enable keyd daemon
-  ansible.builtin.systemd:
-      name: keyd
-      enabled: yes
-  become: true
-
-- name: start keyd daemon
+- name: enable / start keyd daemon
   ansible.builtin.systemd:
       name: keyd
       state: started
+      enabled: yes
   become: true
 
 - name: configure keyd
