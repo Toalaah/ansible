@@ -1,6 +1,7 @@
 # This file defines packages which should be installed exclusively on Arch Linux machines.
 packages:
   - binutils
+  - brightnessctl
   - clang
   - cmake
   - compton
