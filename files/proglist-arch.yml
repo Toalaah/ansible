@@ -29,6 +29,7 @@ packages:
   - opencl-nvidia
   - pacman-contrib
   - pamixer
+  - parcellite
   - pipewire
   - pipewire-alsa
   - pipewire-pulse
