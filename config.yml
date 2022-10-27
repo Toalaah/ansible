@@ -10,6 +10,7 @@ dotfiles:
   packages:
     - alacritty
     - chromium
+    - dunst
     - kitty
     - neomutt
     - nvim
