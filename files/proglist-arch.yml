@@ -54,6 +54,7 @@ packages:
   - xorg-xinit
   - xorg-xrandr
   - xorg-xset
+  - xorg-xsetroot
   - xss-lock
   - yajl
   - zathura
