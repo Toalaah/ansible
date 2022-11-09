@@ -4,11 +4,16 @@
     user_email: "{{ git.user_email }}"
     user_name: "{{ git.user_name }}"
     default_branch_name: "{{ git.default_branch_name }}"
+    config_path: "{{ git.config_path }}"
 
 - name: setup git config
   block:
   - name: configure git
-    git_config: { name: "{{ item.name }}", scope: "{{ item.scope }}", value: "{{ item.value }}" }
+    git_config:
+      name: "{{ item.name }}"
+      scope: "{{ item.scope }}"
+      value: "{{ item.value }}"
+      file: "{{ config_path }}"
     loop:
       - { name: 'alias.ci',             scope: 'global', value: 'commit' }
       - { name: 'alias.lg',             scope: 'global', value: 'log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative' }

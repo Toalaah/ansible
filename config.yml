@@ -66,6 +66,7 @@ git:
   user_email: samuel.kunst@gmail.com
   user_name: Samuel Kunst
   default_branch_name: master
+  config_path: ~/.config/git/config
 # Install ungoogled-chromium
 configure_browser: true
 # Configure the Yarn package manager
