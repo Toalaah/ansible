@@ -63,7 +63,7 @@ shell:
 # Set various git aliases / preferences
 git:
   configure_git: true
-  user_email: samuel.kunst@gmail.com
+  user_email: samuel@kunst.me
   user_name: Samuel Kunst
   default_branch_name: master
   config_path: ~/.config/git/config
