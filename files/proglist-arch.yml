@@ -4,8 +4,10 @@ packages:
   - brightnessctl
   - clang
   - cmake
-  - compton
+  - picom
   - dhcpcd
+  - sxhkd
+  - bspwm
   - dunst
   - elinks
   - feh
