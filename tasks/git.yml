@@ -11,23 +11,26 @@
   - name: configure git
     git_config:
       name: "{{ item.name }}"
-      scope: "{{ item.scope }}"
+      scope: "file"
       value: "{{ item.value }}"
       file: "{{ config_path }}"
     loop:
-      - { name: 'alias.ci',             scope: 'global', value: 'commit' }
-      - { name: 'alias.lg',             scope: 'global', value: 'log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative' }
-      - { name: 'alias.s',              scope: 'global', value: 'status --short' }
-      - { name: 'commit.gpgsign',       scope: 'global', value: 'true' }
-      - { name: 'core.editor',          scope: 'global', value: 'nvim' }
-      - { name: 'core.excludesFile',    scope: 'global', value: '~/.config/git/ignore' }
-      - { name: 'core.hooksPath',       scope: 'global', value: '~/.config/git/hooks' }
-      - { name: 'core.pager',           scope: 'global', value: 'bat --style=plain' }
-      - { name: 'credential.provider',  scope: 'global', value: 'generic' }
-      - { name: 'init.defaultBranch',   scope: 'global', value: '{{ default_branch_name }}' }
-      - { name: 'pull.rebase',          scope: 'global', value: 'true' }
-      - { name: 'push.autoSetupRemote', scope: 'global', value: 'true' }
-      - { name: 'rebase.autoStash',     scope: 'global', value: 'true' }
-      - { name: 'rebase.autoStash',     scope: 'global', value: 'true' }
-      - { name: 'user.email',           scope: 'global', value: '{{ user_email }}' }
-      - { name: 'user.name',            scope: 'global', value: '{{ user_name }}'}
+      - { name: 'alias.lg',              value: 'log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative' }
+      - { name: 'alias.s',               value: 'status --short' }
+      - { name: 'commit.gpgsign',        value: 'true' }
+      - { name: 'core.editor',           value: 'nvim' }
+      - { name: 'core.excludesFile',     value: '~/.config/git/ignore' }
+      - { name: 'core.hooksPath',        value: '~/.config/git/hooks' }
+      - { name: 'core.pager',            value: 'delta' }
+      - { name: 'credential.provider',   value: 'generic' }
+      - { name: 'init.defaultBranch',    value: '{{ default_branch_name }}' }
+      - { name: 'pull.rebase',           value: 'true' }
+      - { name: 'push.autoSetupRemote',  value: 'true' }
+      - { name: 'rebase.autoStash',      value: 'true' }
+      - { name: 'user.email',            value: '{{ user_email }}' }
+      - { name: 'user.name',             value: '{{ user_name }}'}
+      - { name: 'interactive.diffFilter',value: 'delta --color-only'}
+      - { name: 'delta.syntax-theme',    value: 'gruvbox'}
+      - { name: 'delta.side-by-side',    value: 'false'}
+      - { name: 'merge.conflictStyle',   value: 'diff3'}
+      - { name: 'diff.colorMoved',       value: 'default'}
