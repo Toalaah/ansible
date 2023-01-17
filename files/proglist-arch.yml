@@ -12,6 +12,7 @@ packages:
   - elinks
   - feh
   - i3lock-color
+  - betterlockscreen-git
   - jsoncpp
   - libx11
   - libxft
